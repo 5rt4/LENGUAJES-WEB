@@ -1,0 +1,18 @@
+.nav-sep {
+    display: flex;
+  }
+  
+  .nav-sep a {
+    padding: 0 12px;
+    border-right: 1px solid #ccc;
+    text-decoration: none;
+    color: #0070f3;
+  }
+  
+  .nav-sep a:first-child {
+    padding-left: 0;
+  }
+  
+  .nav-sep a:last-child {
+    border-right: none;
+  }
