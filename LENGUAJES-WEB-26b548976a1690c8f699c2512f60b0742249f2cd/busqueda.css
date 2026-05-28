@@ -1,0 +1,113 @@
+body{
+    background: linear-gradient(to bottom, #111111, #1c1c1c);
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.home-btn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    background-color: orange;
+    color: black;
+
+    text-decoration: none;
+
+    padding: 14px 20px;
+    border-radius: 12px;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+
+    box-shadow: 0px 0px 15px rgba(255,166,0,0.4);
+
+    transition: 0.3s;
+}
+
+
+
+
+.home-btn:hover{
+    background-color: white;
+    transform: scale(1.08);
+}
+
+
+
+
+footer{
+    text-align: center;
+    padding: 20px;
+    color: #999;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+
+
+
+table{
+    width: 90%;
+    margin: 40px auto;
+    border-collapse: collapse;
+    background-color: rgba(27, 27, 27, 0.95);
+    color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 0px 20px rgba(255, 166, 0, 0.2);
+}
+
+
+
+
+thead{
+    background-color: orange;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+
+
+td{
+    padding: 18px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+
+
+
+tbody tr{
+    transition: 0.3s;
+}
+
+
+
+
+tbody tr:hover{
+    background-color: rgba(255, 166, 0, 0.15);
+}
+
+
+
+
+tbody td:last-child{
+    color: orange;
+    font-weight: bold;
+}
+
+
+
+
+tbody td:first-child{
+    color: #ffb347;
+    font-weight: 600;
+}
