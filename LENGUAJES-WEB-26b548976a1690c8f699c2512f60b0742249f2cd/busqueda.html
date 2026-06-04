@@ -18,85 +18,113 @@
 
         <thead>
             <tr>
-                <td>marca</td>
-                <td>producto</td>
-                <td>presentacion</td>
-                <td>precio</td>
+                <td>MARCA</td>
+                <td>PRODUCTO</td>
+                <td>PRESENTACION</td>
+                <td>PRECIO</td>
+              
             </tr>
         </thead>
 
         <tbody>
 
+<input type="text" id="buscador" placeholder="Buscar producto..." onkeyup="filtrarTabla()">
+
             <tr>
                 <td>GOLD</td>
                 <td>WHEY PROTEIN CHOCOLATE/VAINILLA</td>
                 <td>2LB</td>
-                <td>$62000</td>
+                <td>$62000 <button onclick="agregarCarrito('Whey Protein', 62000)">Agregar al carrito</button></td>
+                
             </tr>
 
             <tr>
                 <td>GOLD</td>
                 <td>CREATINE MONOHYDRATE</td>
                 <td>300g</td>
-                <td>$25000</td>
+                <td>$25000 <button onclick="agregarCarrito('Creatine', 25000)">Agregar al carrito</button></td>
+                
             </tr>
 
             <tr>
                 <td>PONT</td>
                 <td>PROTEIN BAR-UNIDAD</td>
                 <td>1 unidad</td>
-                <td>$2500</td>
+                <td>$2500 <button onclick="agregarCarrito('Protein Bar', 2500)">Agregar al carrito</button></td>
+                
             </tr>
 
             <tr>
                 <td>BNB</td>
                 <td>PROTEIN BAR-UNIDAD</td>
                 <td>1 unidad</td>
-                <td>$2000</td>
+                <td>$2000 <button onclick="agregarCarrito('Protein Bar', 2000)">Agregar al carrito</button></td>
+                
             </tr>
 
             <tr>
                 <td>MUECAS</td>
                 <td>PROTEIN BAR-UNIDAD</td>
                 <td>1 unidad</td>
-                <td>$2000</td>
+                <td>$2000 <button onclick="agregarCarrito('Protein Bar', 2000)">Agregar al carrito</button></td>
+                
             </tr>
 
             <tr>
                 <td>BRAVA</td>
                 <td>PROTEIN BAR-UNIDAD</td>
                 <td>1 unidad</td>
-                <td>$2000</td>
+                <td>$2000 <button onclick="agregarCarrito('Protein Bar', 2000)">Agregar al carrito</button></td>
+                
             </tr>
 
             <tr>
                 <td>GOOM</td>
                 <td>PANCAKES PROTEICOS CHOCOLATE/VAINILLA</td>
                 <td>400G</td>
-                <td>$15000</td>
+                <td>$15000 <button onclick="agregarCarrito('Pancakes Proteicos', 15000)">Agregar al carrito</button></td>
+                
             </tr>
 
             <tr>
                 <td>STAR</td>
                 <td>TNT DYNAMITE BLUE RAZZ</td>
                 <td>240G</td>
-                <td>$30000</td>
+                <td>$30000 <button onclick="agregarCarrito('TNT Dynamite', 30000)">Agregar al carrito</button></td>
+                
             </tr>
 
             <tr>
                 <td>---</td>
                 <td>SHAKER SIMPLE</td>
                 <td>600ml</td>
-                <td>$7000</td>
+                <td>$7000 <button onclick="agregarCarrito('Shaker Simple', 7000)">Agregar al carrito</button></td>
+                
             </tr>
 
             <tr>
-                <td>gold</td>
+                <td>GOLD</td>
                 <td>SHAKER CON COMPARTIMENTO</td>
                 <td>600ml</td>
-                <td>$9000</td>
+                <td>$9000 <button onclick="agregarCarrito('Shaker Con Compartimento', 9000)">Agregar al carrito</button></td>
+                
             </tr>
 
+<script>
+function filtrarTabla() {
+  let input = document.getElementById("buscador").value.toLowerCase();
+  let filas = document.querySelectorAll("tbody tr");
+
+  filas.forEach(fila => {
+    let texto = fila.textContent.toLowerCase();
+    if (texto.includes(input)) {
+      fila.style.display = "";
+    } else {
+      fila.style.display = "none";
+    }
+  });
+}
+</script>
         </tbody>
 
     </table>
@@ -104,6 +132,22 @@
     <footer>
         ⚠️ Precios sujetos a cambios sin previo aviso.
     </footer>
+
+    <script>
+        function agregarCarrito(nombre, precio) {
+        
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  
+      
+      carrito.push({ nombre, precio });
+  
+      
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+  
+        alert(nombre + " agregado al carrito ✅");
+        }
+    </script>
+
 
 </body>
 

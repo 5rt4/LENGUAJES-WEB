@@ -1,10 +1,6 @@
 <!DOCTYPE html>
-<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="combos.css">
 
@@ -14,6 +10,7 @@
 <body>
     <a href="prueba.html" class="home-btn">Inicio</a>
 
+ 
     <h1>🔥 Combos TruePowerFit 🔥</h1>
 
     <div class="banner">
@@ -71,7 +68,7 @@
             <p>💪 Whey Gold 2LB + Creatina Gold 300g</p>
             <h3>$77,000</h3>
             <span class="ahorro">Ahorras $10,000</span>
-            <button>Comprar</button>
+           <button onclick="agregarCarrito('Solo Fuerza', 77000)">Agregar al carrito</button>
         </div>
 
         <div class="combo-card destacado">
@@ -79,7 +76,7 @@
             <p>⚡ Whey Gold 2LB + Creatina Gold 300g + Shaker Simple</p>
             <h3>$81,500</h3>
             <span class="ahorro">Ahorras $12,500</span>
-            <button>Comprar</button>
+                <button onclick="agregarCarrito('Starter', 81500)">Agregar al carrito</button>
         </div>
 
         <div class="combo-card premium">
@@ -87,7 +84,7 @@
             <p>🔥 Whey Gold + Creatina + Pancakes + Shaker Compartimento</p>
             <h3>$96,500</h3>
             <span class="ahorro">Ahorras $15,000</span>
-            <button>Comprar</button>
+            <button onclick="agregarCarrito('Combo Premium', 96500)">Agregar al carrito</button>
         </div>
 
         <div class="combo-card">
@@ -95,7 +92,67 @@
             <p>🥤 Pancakes + Barras Proteinicas + Creatina + Shaker</p>
             <h3>$51,500</h3>
             <span class="ahorro">Ahorras $6,000</span>
-            <button>Comprar</button>
+            <button onclick="agregarCarrito('Desayuno Fit', 51500)">Agregar al carrito</button>
         </div>
+    </div>
 
+    <script>
+        function agregarCarrito(nombre, precio) {
+        
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  
+      
+      carrito.push({ nombre, precio });
+  
+      
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+  
+        alert(nombre + " agregado al carrito ✅");
+        }
+    </script>
+
+
+ <script>
+document.querySelectorAll(".producto-card img").forEach(img => {
+  img.addEventListener("click", () => {
+    img.style.transform = "scale(1.2)";
+    img.style.transition = "0.5s";
+    setTimeout(() => {
+      img.style.transform = "scale(1)";
+    }, 500);
+  });
+});
+</script>
+
+
+
+<div id="modal">
+  <span onclick="cerrarModal()" class="cerrar">✖</span>
+  <div id="contenido-modal"></div>
+</div>
+
+  
+<script>
+document.querySelectorAll(".producto-card").forEach(card => {
+  card.addEventListener("click", () => {
+    let titulo = card.querySelector("h2").textContent;
+    let descripcion = card.querySelector("p").textContent;
+    let imagen = card.querySelector("img").src;
+
+    document.getElementById("contenido-modal").innerHTML = `
+      <h2 style="color:orange;">${titulo}</h2>
+      <img src="${imagen}" style="width:100%; border-radius:10px; margin:10px 0;">
+      <p>${descripcion}</p>
+    `;
+    document.getElementById("modal").style.display = "block";
+  });
+});
+
+function cerrarModal() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+
+
+</body>
 </html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="carrito.css">
+</head>
+<body>
+ <a href="prueba.html" class="home-btn">Inicio</a>
+  <h1>🧑🏾‍🦼‍➡️ Carrito de Compras</h1>
+  <div id="carrito">
+    <ul id="lista-carrito"></ul>
+    <p>Total: $<span id="total">0</span></p>
+  </div>
+
+  <script>
+    function mostrarCarrito() {
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      let lista = document.getElementById("lista-carrito");
+      let totalSpan = document.getElementById("total");
+      let total = 0;
+
+      lista.innerHTML = "";
+      carrito.forEach((item, index) => {
+        lista.innerHTML += `
+          <li>
+            ${item.nombre} - $${item.precio}
+            <button class="btn-eliminar" onclick="eliminarProducto(${index})">❌</button>
+          </li>
+        `;
+        total += item.precio;
+      });
+
+      totalSpan.textContent = total;
+    }
+
+    function eliminarProducto(index) {
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      carrito.splice(index, 1);
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      mostrarCarrito();
+    }
+
+    // Mostrar al cargar la página
+    mostrarCarrito();
+  </script>
+
+
+<div id="carrito">
+  <ul id="lista-carrito"></ul>
+  <p>Total: $<span id="total">0</span></p>
+</div>
+
+ <h2>👇🏾compras x mayor👇🏾
+ </h2>
+
+<section id="form-mayoristas">
+  <h3>Formulario de Compras Mayoristas</h3>
+  <form id="mayoristaForm">
+    <label for="nombre">Nombre completo:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="telefono">Teléfono:</label>
+    <input type="tel" id="telefono" name="telefono" required>
+
+    <label for="empresa">Empresa:</label>
+    <input type="text" id="empresa" name="empresa">
+
+    <label for="cantidad">Cantidad de productos:</label>
+    <input type="number" id="cantidad" name="cantidad" min="10" required>
+
+    <label for="mensaje">Mensaje adicional:</label>
+    <textarea id="mensaje" name="mensaje"></textarea>
+
+    <button type="submit">Enviar solicitud</button>
+  </form>
+</section
+>
+<script>
+document.getElementById("mayoristaForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  alert("✅ Solicitud enviada. Nos pondremos en contacto pronto.");
+  this.reset();
+});
+</script>
+
+
+</body>
+</html>
